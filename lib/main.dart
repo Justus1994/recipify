@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipify/pages/Home.dart';
+import 'package:recipify/pages/RecipePage.dart';
 
 void main() {
   runApp(Recipify());
@@ -7,6 +8,7 @@ void main() {
 
 final routes = {
   '/': (BuildContext context) => Home(),
+  '/create-recipe': (BuildContext context) => RecipePage(),
 };
 
 class Recipify extends StatelessWidget {

@@ -2,14 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="02f009c6-fbe7-46c7-81d9-6eb6d4804f6d" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/components/NavigationBar.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/pages/Home.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/Menu.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/Planner.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/Recipes.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/db/RecipifyDB.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/Menu.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/Recipe.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/model/Tag.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/pages/RecipePage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/NavigationBar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/NavigationBar.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/test/widget_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/pages/Home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/pages/Home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/Menu.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/Menu.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/Planner.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/Planner.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/Recipes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/Recipes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,11 +57,13 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/pages" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib" />
+      <recent name="$PROJECT_DIR$/lib/views" />
       <recent name="$PROJECT_DIR$/lib/pages" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -84,5 +100,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

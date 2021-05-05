@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class NavigationBar extends StatelessWidget {
-  NavigationBar({Key key, this.onTap, this.selectedIndex}) : super(key: key);
+  NavigationBar({Key? key, this.onTap, required this.selectedIndex}) : super(key: key);
 
   final onTap;
   final int selectedIndex;
