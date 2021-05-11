@@ -23,3 +23,7 @@ doc/api/
 **/Podfile.lock
 **/.flutter-plugins
 /.flutter-plugins-dependencies
+
+*.idea
+
+**/assets/fonts

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:recipify/db/RecipifyDB.dart';
 
@@ -38,6 +40,7 @@ class _RecipesState extends State<Recipes> {
           itemBuilder: (context, index) {
             final recipe = recipes[index];
             return Container(
+              key: UniqueKey(),
               decoration: BoxDecoration(
                 color: Colors.white
               ),
@@ -65,7 +68,15 @@ class _RecipesState extends State<Recipes> {
                 key: Key('key'),
                 onDismissed: (direction) {
                   setState(() {
+                    recipes.removeAt(index);
                   });
+                  if(direction == DismissDirection.endToStart) {
+                    recipes.add(recipe);
+                    initState();
+                  } else {
+                    RecipifyDB.db.deleteRecipeAndImage(recipe);
+                  }
+
                 },
                 child: ListTile(
                   title: Text('${recipe.name}'),
@@ -73,7 +84,7 @@ class _RecipesState extends State<Recipes> {
                   dense: true,
                   contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   leading: CircleAvatar(
-                    backgroundImage: MemoryImage(recipe.image),
+                    backgroundImage: FileImage(File(recipe.imagePath), scale: 0.01),
                     radius: 30,
                     // FileImage(File(recipe.image)) : null,
                   ),
@@ -92,9 +103,7 @@ class _RecipesState extends State<Recipes> {
 
   void fabOnPress() async {
     final result = await Navigator.of(context).pushNamed('/create-recipe') as Recipe;
-    print(result.toString());
     RecipifyDB.db.insertRecipe(result);
-    setState(() {
-    });
+    initState();
   }
 }

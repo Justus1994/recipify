@@ -13,7 +13,7 @@ class Menu {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'day': simpleDate(day),
+      'day': _simpleDate(day),
       'breakfast_id' : breakfast != null ? breakfast!.id : 0,
       'lunch_id' : lunch != null ? lunch!.id : 0,
       'dinner_id' : dinner != null ? dinner!.id : 0
@@ -31,6 +31,23 @@ class Menu {
     );
   }
 
+  String? getWeekday() {
+    switch (day.weekday) {
+      case 1: {return 'Monday';}
+      case 2: {return 'Tuesday';}
+      case 3: {return 'Wednesday';}
+      case 4: {return 'Thursday';}
+      case 5: {return 'Friday';}
+      case 6: {return 'Saturday';}
+      case 7: {return 'Sunday';}
+      default: { return 'Wednesday';}
+    }
+  }
+
+  String? getDisplayDate() {
+    return _simpleDate(day).split("-").reversed.join(".");
+  }
+
   @override
   String toString() {
     return 'Menu{\n\tid: \t$id, \n\tday: \t$day, \n\tbreakfast: \t$breakfast, \n\tlunch: \t\t$lunch, \n\tdinner: \t$dinner\n}';
@@ -38,7 +55,7 @@ class Menu {
 
 }
 
-String simpleDate(DateTime time) {
+String _simpleDate(DateTime time) {
   return time.toIso8601String().substring(0, 10);
 }
 

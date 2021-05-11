@@ -1,8 +1,11 @@
 import 'dart:developer';
 
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:recipify/model/Menu.dart';
 import 'package:recipify/model/Recipe.dart';
+import 'dart:io';
 
 import 'package:sqflite/sqflite.dart';
 
@@ -52,7 +55,7 @@ class RecipifyDB {
             meal INTEGER,
             description TEXT,
             energy INTEGER,
-            image BLOB,
+            image_path TEXT,
             tags TEXT
           )
           ''';
@@ -89,10 +92,16 @@ class RecipifyDB {
   }
 
   Future<int> deleteRecipe(int id) async {
+    log('DELETE RECIPE WITH ID: $id');
+
     final db = await database;
     return db.delete('recipes', where: "id = ?", whereArgs: [id]);
   }
 
+  Future<int> deleteRecipeAndImage(Recipe recipe) async {
+    deleteImage(recipe.imagePath);
+    return deleteRecipe(recipe.id!);
+  }
   Future<Recipe> getRecipe(int id) async {
     final db = await database;
     final List<Map<String, dynamic>> maps = await db.query('recipes', where: "id = ?", whereArgs: [id]);
@@ -181,6 +190,24 @@ class RecipifyDB {
     return maps.isNotEmpty ?  Menu.fromMap(maps.first) : throw('No Menu for day $day');
 
   }
+
+
+  // ****** FileSystem Actions ******
+
+  Future<String> saveImage(File file, String imageName) async {
+    final appDir = await getApplicationDocumentsDirectory();
+    final String path = appDir.path;
+    final String imagePath = '$path/$imageName';
+    await file.copy(imagePath);
+    return imagePath;
+  }
+
+  Future deleteImage(String imagePath) async {
+    await File(imagePath).delete();
+  }
+
+
+
   // ****** Commands ********
 
   Future<void> dropTableIfExistsThenReCreate() async {
@@ -189,6 +216,7 @@ class RecipifyDB {
     await db.execute(createTableMenu());
     await db.execute("DROP TABLE IF EXISTS recipes");
     await db.execute(createTableRecipe());
+    log('######## DROPPED DB ########');
   }
 
 

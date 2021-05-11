@@ -12,7 +12,7 @@ class Recipe {
   Meal meal;
   String description;
   int energy;
-  Uint8List image;
+  String imagePath;
   List<Tag> tags;
 
 
@@ -22,7 +22,7 @@ class Recipe {
     required this.name,
     required this.description,
     required this.energy,
-    required this.image,
+    required this.imagePath,
     required this.tags
   });
 
@@ -33,7 +33,7 @@ class Recipe {
       'meal' : meal.index,
       'description' : description,
       'energy' : energy,
-      'image' : image,
+      'image_path' : imagePath,
       'tags' : jsonEncode(tags)
     };
   }
@@ -45,7 +45,7 @@ class Recipe {
       meal: Meal.values.elementAt(map['${prefix}meal']),
       description: map['${prefix}description'],
       energy: map['${prefix}energy'],
-      image: map['${prefix}image'],
+      imagePath: map['${prefix}image_path'],
       tags: (json.decode(map['${prefix}tags']) as List).map((i) => Tag.fromJson(i)).toList(),
     );
   }
@@ -56,4 +56,4 @@ class Recipe {
   }
 }
 
-enum Meal {BREAKFAST, LUNCH, DINNER, ANY}
+enum Meal { BREAKFAST, LUNCH, DINNER, ANY }

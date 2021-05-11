@@ -1,5 +1,7 @@
 import 'dart:developer';
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:recipify/db/RecipifyDB.dart';
 import 'package:recipify/model/Recipe.dart';
@@ -30,7 +32,7 @@ class _PlannerState extends State<Planner> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: recipes.length > 0 ? Image.memory(recipes[0].image) : Text('Planner')
+        child: Text('Planner'),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () => RecipifyDB.db.dropTableIfExistsThenReCreate(),

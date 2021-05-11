@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:recipify/db/RecipifyDB.dart';
 import 'dart:io';
 
 import 'package:recipify/model/Recipe.dart';
@@ -28,7 +29,7 @@ class _RecipePageState extends State<RecipePage> {
   final tags = <String>[];
 
   getImage() async {
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile = await picker.getImage(source: ImageSource.gallery, imageQuality: 100);
     setState(() {
       if (pickedFile != null) {
         _image = File(pickedFile.path);
@@ -210,14 +211,14 @@ class _RecipePageState extends State<RecipePage> {
                 .showSnackBar(SnackBar(content: Text('You must at least provide a Name for your Recipe')));
             return;
           }
-          final imagePath = await saveImage(titleController.text);
+          final imagePath = await RecipifyDB.db.saveImage(_image!, titleController.text);
 
           final newRecipe = Recipe(
             meal: Meal.ANY,
             name: titleController.text,
             description: descController.text,
             energy: 20,
-            image: await _image!.readAsBytes(),
+            imagePath: imagePath,
             tags: tags.map((e) => Tag(name: e, type: Type.TAG)).toList(),
           );
 
